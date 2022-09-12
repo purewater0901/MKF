@@ -69,7 +69,7 @@ int main() {
     }
 
     // Reading files
-    std::ifstream odometry_file("/home/yutaka/CLionProjects/uncertainty_propagation/data/MRCLAM_Dataset1/Robot1_Odometry.dat");
+    std::ifstream odometry_file("/home/yutaka/CLionProjects/uncertainty_propagation/data/MRCLAM_Dataset1/Robot2_Odometry.dat");
     if(odometry_file.fail()) {
         std::cout << "Failed to Open the ground truth file" << std::endl;
         return -1;
@@ -94,7 +94,7 @@ int main() {
         odometry_time.at(i) -= base_time;
     }
 
-    std::ifstream ground_truth_file("/home/yutaka/CLionProjects/uncertainty_propagation/data/MRCLAM_Dataset1/Robot1_Groundtruth.dat");
+    std::ifstream ground_truth_file("/home/yutaka/CLionProjects/uncertainty_propagation/data/MRCLAM_Dataset1/Robot2_Groundtruth.dat");
     if(ground_truth_file.fail()) {
         std::cout << "Failed to Open the ground truth file" << std::endl;
         return -1;
@@ -122,7 +122,7 @@ int main() {
         ground_truth_file.close();
     }
 
-    std::ifstream measurement_file("/home/yutaka/CLionProjects/uncertainty_propagation/data/MRCLAM_Dataset1/Robot1_Measurement.dat");
+    std::ifstream measurement_file("/home/yutaka/CLionProjects/uncertainty_propagation/data/MRCLAM_Dataset1/Robot2_Measurement.dat");
     if(measurement_file.fail()) {
         std::cout << "Failed to Open the ground truth file" << std::endl;
         return -1;
@@ -182,7 +182,7 @@ int main() {
         ground_truth_bearing.push_back(bearing_true);
     }
 
-    std::ofstream  measurement_updated_file("/home/yutaka/CLionProjects/uncertainty_propagation/data/MRCLAM_Dataset1/Robot1_Measurement_updated.dat");
+    std::ofstream  measurement_updated_file("/home/yutaka/CLionProjects/uncertainty_propagation/data/MRCLAM_Dataset1/Robot2_Measurement_updated.dat");
     for(size_t i=0; i<measurement_time.size(); ++i) {
         measurement_updated_file << measurement_time.at(i) << " " << measurement_subject.at(i) << " "
                                  << measurement_range.at(i) << " " << measurement_bearing.at(i) << " "

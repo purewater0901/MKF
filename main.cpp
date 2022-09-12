@@ -31,6 +31,7 @@ struct LandMark
 };
 
 int main() {
+    const int robot_num = 2;
     // Creating Map
     std::map<int, int> barcode_map;
     barcode_map.insert(std::make_pair(23, 5));
@@ -69,7 +70,8 @@ int main() {
     }
 
     // Reading files
-    std::ifstream odometry_file("/home/yutaka/CLionProjects/uncertainty_propagation/data/MRCLAM_Dataset1/Robot1_Odometry.dat");
+    const std::string odometry_filename = "/home/yutaka/CLionProjects/uncertainty_propagation/data/MRCLAM_Dataset1/Robot" + std::to_string(robot_num) + "_Odometry.dat";
+    std::ifstream odometry_file(odometry_filename);
     if(odometry_file.fail()) {
         std::cout << "Failed to Open the ground truth file" << std::endl;
         return -1;
@@ -94,15 +96,16 @@ int main() {
         odometry_time.at(i) -= base_time;
     }
 
-    std::ifstream ground_truth_file("/home/yutaka/CLionProjects/uncertainty_propagation/data/MRCLAM_Dataset1/Robot1_Groundtruth.dat");
+    const std::string ground_truth_filename = "/home/yutaka/CLionProjects/uncertainty_propagation/data/MRCLAM_Dataset1/Robot" + std::to_string(robot_num) + "_Groundtruth.dat";
+    std::ifstream ground_truth_file(ground_truth_filename);
     if(ground_truth_file.fail()) {
         std::cout << "Failed to Open the ground truth file" << std::endl;
         return -1;
     }
-    std::vector<double> ground_truth_time{0.0};
-    std::vector<double> ground_truth_x{3.57323240};
-    std::vector<double> ground_truth_y{-3.33283870};
-    std::vector<double> ground_truth_yaw{2.34080000};
+    std::vector<double> ground_truth_time;
+    std::vector<double> ground_truth_x;
+    std::vector<double> ground_truth_y;
+    std::vector<double> ground_truth_yaw;
     {
         double time, x, y, yaw;
         ground_truth_file >> time >> x >> y >> yaw;
@@ -122,7 +125,8 @@ int main() {
         ground_truth_file.close();
     }
 
-    std::ifstream measurement_file("/home/yutaka/CLionProjects/uncertainty_propagation/data/MRCLAM_Dataset1/Robot1_Measurement.dat");
+    const std::string measurement_filename = "/home/yutaka/CLionProjects/uncertainty_propagation/data/MRCLAM_Dataset1/Robot" + std::to_string(robot_num) + "_Measurement.dat";
+    std::ifstream measurement_file(measurement_filename);
     if(measurement_file.fail()) {
         std::cout << "Failed to Open the ground truth file" << std::endl;
         return -1;
@@ -169,7 +173,7 @@ int main() {
     const auto measurement_noise_map = scenario.observation_noise_map_;
 
     StateInfo nkf_state_info;
-    nkf_state_info.mean = scenario.ini_mean_;
+    nkf_state_info.mean = {ground_truth_x.front(), ground_truth_y.front(), ground_truth_yaw.front()};//scenario.ini_mean_;
     nkf_state_info.covariance = scenario.ini_cov_;
     auto ekf_state_info = nkf_state_info;
     auto ukf_state_info = nkf_state_info;

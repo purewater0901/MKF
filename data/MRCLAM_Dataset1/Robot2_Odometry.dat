@@ -1,8 +1,4 @@
-# UTIAS Multi-Robot Cooperative Localization and Mapping Dataset
-# produced by Keith Leung (keith.leung@robotics.utias.utoronto.ca) 2009
-# Odometry Data Fomat:
-# Time [s]    forward velocity [m/s]    angular velocity[rad/s] 
-1248272273.972 	  0.086 	 -0.398 
+1248272273.972 	  0.086 	 -0.398
 1248272274.013 	  0.000 	  0.000 
 1248272274.023 	  0.086 	 -0.398 
 1248272274.034 	  0.086 	 -0.398 

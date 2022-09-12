@@ -1,8 +1,4 @@
-# UTIAS Multi-Robot Cooperative Localization and Mapping Dataset
-# produced by Keith Leung (keith.leung@robotics.utias.utoronto.ca) 2009
-# Measurement Data Fomat:
-# Time [s]    Subject #    range [m]    bearing [rad] 
-1248272273.862 	  25 	  3.375 	  0.053 
+1248272273.862 	  25 	  3.375 	  0.053
 1248272273.862 	  61 	  1.968 	  0.559 
 1248272274.108 	  25 	  3.379 	  0.041 
 1248272274.355 	  61 	  1.940 	  0.563 

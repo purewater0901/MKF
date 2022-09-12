@@ -21,22 +21,14 @@ struct SimpleVehicleGaussianScenario
     SimpleVehicleGaussianScenario() : filename_("/simple_vehicle_gaussian.csv")
     {
         // Position normal distribution
-        const double x_mean = 3.57323240;
         const double x_cov = 0.01*0.01;
-        const double y_mean = -3.33283870;
         const double y_cov = 0.01*0.01;
-        const double yaw_mean = 2.34080000;
         const double yaw_cov = 0.01*0.01;
 
         // Normal Distribution
-        NormalDistribution x0_dist(x_mean, x_cov);
-        NormalDistribution y0_dist(y_mean, y_cov);
-        NormalDistribution yaw0_dist(yaw_mean, yaw_cov);
-
-        ini_mean_ = {x0_dist.calc_mean(), y0_dist.calc_mean(), yaw0_dist.calc_mean()};
-        ini_cov_ << x0_dist.calc_variance(), 0.0, 0.0,
-                    0.0, y0_dist.calc_variance(), 0.0,
-                    0.0, 0.0, yaw0_dist.calc_variance();
+        ini_cov_ << x_cov, 0.0, 0.0,
+                    0.0, y_cov, 0.0,
+                    0.0, 0.0, yaw_cov;
 
         // Observation Noise
         const double mean_wr = 1.0;
@@ -51,7 +43,6 @@ struct SimpleVehicleGaussianScenario
     const std::string filename_{"/simple_vehicle_gaussian.csv"};
 
     // Initial Distribution
-    Eigen::Vector3d ini_mean_;
     Eigen::Matrix3d ini_cov_;
 
     // Noise
@@ -63,22 +54,14 @@ struct SimpleVehicleNonGaussianScenario
     SimpleVehicleNonGaussianScenario() : filename_("/simple_vehicle_non_gaussian.csv")
     {
         // Position normal distribution
-        const double x_mean = 3.57323240;
         const double x_cov = 0.01*0.01;
-        const double y_mean = -3.33283870;
         const double y_cov = 0.01*0.01;
-        const double yaw_mean = 2.34080000;
         const double yaw_cov = 0.01*0.01;
 
         // Normal Distribution
-        NormalDistribution x0_dist(x_mean, x_cov);
-        NormalDistribution y0_dist(y_mean, y_cov);
-        NormalDistribution yaw0_dist(yaw_mean, yaw_cov);
-
-        ini_mean_ = {x0_dist.calc_mean(), y0_dist.calc_mean(), yaw0_dist.calc_mean()};
-        ini_cov_ << x0_dist.calc_variance(), 0.0, 0.0,
-                0.0, y0_dist.calc_variance(), 0.0,
-                0.0, 0.0, yaw0_dist.calc_variance();
+        ini_cov_ << x_cov, 0.0, 0.0,
+                    0.0, y_cov, 0.0,
+                    0.0, 0.0, yaw_cov;
 
         // Observation Noise
         const double lambda_wr = 1.0;
@@ -95,7 +78,6 @@ struct SimpleVehicleNonGaussianScenario
     const std::string filename_{"/simple_vehicle_non_gaussian.csv"};
 
     // Initial Distribution
-    Eigen::Vector3d ini_mean_;
     Eigen::Matrix3d ini_cov_;
 
     // Noise

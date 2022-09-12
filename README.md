@@ -37,6 +37,10 @@ Before running the code for non-Gaussian environment, you need to preprocess the
 ./main_non_gaussian
 ```
 
+## Result with UTIAS dataset
+#### Robot1
+![](./result/picture/utlas_simulation_result_trajectory.png)
+
 
 ## References
 <a name="ref1">[1]</a> "Moment-Based Exact Uncertainty Propagation Through Nonlinear Stochastic Autonomous Systems",

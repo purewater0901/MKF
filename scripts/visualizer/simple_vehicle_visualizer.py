@@ -8,7 +8,7 @@ import platform
 import os
 
 if __name__ == '__main__':
-    filename = "simple_vehicle_non_gaussian"
+    filename = "simple_vehicle_gaussian"
     os.chdir('../../')
     path = os.getcwd()
     data = pd.read_csv(path + "/result/data/" + filename + ".csv")

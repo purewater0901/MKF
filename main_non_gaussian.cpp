@@ -141,8 +141,8 @@ int main() {
         measurement_file >> time >> id >> range >> bearing >> range_true >> bearing_true;
         while(!measurement_file.eof())
         {
-            //if( (0 <= id  && id <=5) || id==11 || id == 17 || time < 0.0){
-            if( (0 <= id  && id <=5) || time < 0.0){
+            if( (0 <= id  && id <=5) || id==11 || id == 17 || time < 0.0){
+            // if( (0 <= id  && id <=5) || time < 0.0){
                 measurement_file >> time >> id >> range >> bearing >> range_true >> bearing_true;
                 continue;
             }

@@ -15,7 +15,7 @@ if __name__ == '__main__':
     os.chdir('../../')
     path = os.getcwd()
     data = pd.read_csv(path + "/result/data/" + filename + ".csv")
-    print_pos = False
+    print_pos = True
 
     fig = plt.figure(figsize=(8.5,11))
     plt.subplots_adjust(wspace=0.4, hspace=0.8)

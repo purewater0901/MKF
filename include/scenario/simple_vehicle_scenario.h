@@ -65,8 +65,8 @@ struct SimpleVehicleNonGaussianScenario
 
         // Observation Noise
         const double lambda_wr = 1.0;
-        const double lower_bearing = -M_PI/10;
-        const double upper_bearing = M_PI/10;
+        const double lower_bearing = -M_PI/12;
+        const double upper_bearing = M_PI/12;
         observation_noise_map_ = {
                 {OBSERVATION_NOISE::IDX::WR , std::make_shared<ExponentialDistribution>(lambda_wr)},
                 {OBSERVATION_NOISE::IDX::WA , std::make_shared<UniformDistribution>(lower_bearing, upper_bearing)}};

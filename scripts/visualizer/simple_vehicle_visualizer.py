@@ -6,9 +6,12 @@ import matplotlib.patches as pat
 from scipy import stats
 import platform
 import os
+import matplotlib
 
 if __name__ == '__main__':
-    filename = "simple_vehicle_gaussian"
+    matplotlib.rcParams['pdf.fonttype'] = 42
+    matplotlib.rcParams['ps.fonttype'] = 42
+    filename = "simple_vehicle_non_gaussian"
     os.chdir('../../')
     path = os.getcwd()
     data = pd.read_csv(path + "/result/data/" + filename + ".csv")
@@ -51,13 +54,13 @@ if __name__ == '__main__':
     print("ukf_yaw_error_max: ", ukf_yaw_error_max)
 
     if flag_visualize_trajectory:
-        plt.plot(data["x_true"], data["y_true"], color="black", linewidth=2.0, label="True")
-        plt.plot(data["nkf_x"], data["nkf_y"], color="red", linewidth=2.0, label="MKF")
-        plt.plot(data["ekf_x"], data["ekf_y"], color="blue", linewidth=1.5, label="EKF")
-        plt.plot(data["ukf_x"], data["ukf_y"], color="green", linewidth=1.5, label="UKF")
+        plt.plot(data["x_true"], data["y_true"], color="black", linewidth=3.5, label="True")
+        plt.plot(data["nkf_x"], data["nkf_y"], color="red", linewidth=4.0, label="MKF")
+        plt.plot(data["ekf_x"], data["ekf_y"], color="blue", linewidth=3.5, label="EKF", linestyle="dotted")
+        plt.plot(data["ukf_x"], data["ukf_y"], color="green", linewidth=3.5, label="UKF", linestyle="dashed")
         plt.xlabel(r"x[m]", fontsize=40)
         plt.ylabel(r"y[m]", fontsize=40)
-        plt.legend(fontsize=25)
+        plt.legend(fontsize=35)
         filename += "_trajectory"
     else:
         ax1 = fig.add_subplot(211)

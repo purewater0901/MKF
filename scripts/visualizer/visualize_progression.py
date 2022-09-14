@@ -1,6 +1,7 @@
 import numpy as np
 import pandas as pd
 import math
+import matplotlib
 import matplotlib.pyplot as plt
 import matplotlib.patches as pat
 from scipy import stats
@@ -8,11 +9,13 @@ import platform
 import os
 
 if __name__ == '__main__':
+    matplotlib.rcParams['pdf.fonttype'] = 42
+    matplotlib.rcParams['ps.fonttype'] = 42
     filename = "simple_vehicle_non_gaussian"
     os.chdir('../../')
     path = os.getcwd()
     data = pd.read_csv(path + "/result/data/" + filename + ".csv")
-    print_pos = True
+    print_pos = False
 
     fig = plt.figure(figsize=(8.5,11))
     plt.subplots_adjust(wspace=0.4, hspace=0.8)
@@ -58,5 +61,5 @@ if __name__ == '__main__':
     plt.legend(fontsize=35)
 
     plt.savefig(path + "/result/picture/" + filename + ".png")
-    plt.savefig(path + "/result/picture/" + filename + ".eps", bbox_inches="tight", pad_inches=0.05)
+    plt.savefig(path + "/result/picture/" + filename + ".eps", format="eps", bbox_inches="tight", pad_inches=0.05)
     plt.show()

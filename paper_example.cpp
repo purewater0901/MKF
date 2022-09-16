@@ -6,12 +6,102 @@
 #include "distribution/normal_distribution.h"
 #include "distribution/two_dimensional_normal_distribution.h"
 #include "distribution/three_dimensional_normal_distribution.h"
+#include "distribution/exponential_distribution.h"
+#include "distribution/uniform_distribution.h"
 
 #include "filter/paper_example_2d_ukf.h"
 #include "filter/paper_example_3d_ukf.h"
 
 int main()
 {
+    // Two Dimensional
+    {
+        const double x_lambda = 1.0;
+        const double lower_theta = -M_PI/3.0;
+        const double upper_theta = M_PI/6.0;
+        auto x_dist = ExponentialDistribution(x_lambda);
+        auto theta_dist = UniformDistribution(lower_theta, upper_theta);
+        const Eigen::Vector2d mean = {x_dist.calc_mean(), theta_dist.calc_mean()};
+        const Eigen::Matrix2d cov = (Eigen::Matrix2d() << x_dist.calc_variance(), 0.0, 0.0, theta_dist.calc_variance()).finished();
+
+        // E[xy]
+        {
+            // Exact Moment
+            const double exact_moment = x_dist.calc_moment(1) * theta_dist.calc_moment(1);
+
+            // Linear(E[x]E[y)])
+            const double linear_moment = x_dist.calc_moment(1) * theta_dist.calc_moment(1);
+
+            // E[x]E[y]
+            const double non_correlation_exact = x_dist.calc_moment(1) * theta_dist.calc_moment(1);
+
+            // Unscented Transform
+            PaperExample2DUKF ukf(mean, cov);
+            const double ukf_moment = ukf.predict("xy");
+
+            std::cout << "E[xy]" << std::endl;
+            std::cout << "Exact Moment: " << exact_moment << std::endl;
+            std::cout << "Linear: " << linear_moment << std::endl;
+            std::cout << "E[x]E[y]: " << non_correlation_exact << std::endl;
+            std::cout << "UKF Moment: " << ukf_moment << std::endl;
+            std::cout << "MonteCarlo: " << -0.2618191494201287 << std::endl;
+            std::cout << "-----------------------------" << std::endl;
+        }
+
+        // E[xcos(theta)]
+        {
+            // Exact Moment
+            const double exact_moment = x_dist.calc_moment(1) * theta_dist.calc_cos_moment(1);
+
+            // Linear(E[x]E[cos(theta)])
+            const double linear_moment = x_dist.calc_moment(1) * std::cos(theta_dist.calc_moment(1));
+
+            // E[x]E[cos(theta)]
+            const double non_correlation_exact = x_dist.calc_moment(1) * theta_dist.calc_cos_moment(1);
+
+            // Unscented Transform
+            PaperExample2DUKF ukf(mean, cov);
+            const double ukf_moment = ukf.predict("xcos");
+
+            std::cout << "E[xcos(theta)]" << std::endl;
+            std::cout << "Exact Moment: " << exact_moment << std::endl;
+            std::cout << "Linear: " << linear_moment << std::endl;
+            std::cout << "E[x]E[cos(theta)]: " << non_correlation_exact << std::endl;
+            std::cout << "UKF Moment: " << ukf_moment << std::endl;
+            std::cout << "MonteCarlo: " << 0.8696105959403237 << std::endl;
+            std::cout << "----------------------" << std::endl;
+        }
+
+        // E[xcos(theta)sin(theta)]
+        {
+            // Exact Moment
+            const double exact_moment = x_dist.calc_moment(1) * theta_dist.calc_cos_sin_moment(1, 1);
+
+            // Linear(E[x]E[cos(theta)]E[sin(theta)])
+            const double linear_moment = x_dist.calc_moment(0) * std::cos(theta_dist.calc_moment(1)) * std::sin(theta_dist.calc_moment(1));
+
+            // E[x]E[cos(theta)sin(theta)]
+            const double non_correlation_exact = x_dist.calc_moment(1) * theta_dist.calc_cos_sin_moment(1, 1);
+
+            // Unscented Transform
+            PaperExample2DUKF ukf(mean, cov);
+            const double ukf_moment = ukf.predict("xcossin");
+
+            std::cout << "E[xcos(theta)sin(theta)]" << std::endl;
+            std::cout << "Exact Moment: " << exact_moment << std::endl;
+            std::cout << "Linear: " << linear_moment << std::endl;
+            std::cout << "E[x]E[cos(theta)sin(theta)]: " << non_correlation_exact << std::endl;
+            std::cout << "UKF Moment: " << ukf_moment << std::endl;
+            std::cout << "MonteCarlo: " << -0.15915291917551003 << std::endl;
+        }
+    }
+
+    std::cout << "------------------------------" << std::endl;
+    std::cout << "------------------------------" << std::endl;
+    std::cout << "------------------------------" << std::endl;
+    std::cout << "Non-Gaussian Example Finished" << std::endl;
+
+
     // Two Dimensional
     {
         const Eigen::Vector2d mean = {10.0, M_PI/3.0};

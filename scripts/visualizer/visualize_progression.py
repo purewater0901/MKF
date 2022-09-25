@@ -14,8 +14,7 @@ if __name__ == '__main__':
     filename = "simple_vehicle_non_gaussian"
     os.chdir('../../')
     path = os.getcwd()
-    data = pd.read_csv(path + "/result/data/" + filename + ".csv")
-    print_pos = True
+    print_pos = False
 
     fig = plt.figure(figsize=(8.5,11))
     plt.subplots_adjust(wspace=0.4, hspace=0.8)
@@ -60,6 +59,6 @@ if __name__ == '__main__':
     plt.xlabel(r"$v_{\varphi, limit}[rad]$", fontsize=40)
     plt.legend(fontsize=35)
 
-    plt.savefig(path + "/result/picture/" + filename + ".png")
-    plt.savefig(path + "/result/picture/" + filename + ".eps", format="eps", bbox_inches="tight", pad_inches=0.05)
+    plt.savefig(path + "/result/picture/robot1/" + filename + ".png")
+    plt.savefig(path + "/result/picture/robot1/" + filename + ".eps", format="eps", bbox_inches="tight", pad_inches=0.05)
     plt.show()

@@ -18,7 +18,6 @@ if __name__ == '__main__':
     data = pd.read_csv(path + "/result/data/robot" + str(robot_num) + filename + ".csv")
     flag_visualize_trajectory = False
 
-    cm = 1 / 2.54
     fig = plt.figure(figsize=(8.5,11))
     plt.subplots_adjust(wspace=0.4, hspace=0.8)
     plt.rcParams['mathtext.fontset'] = 'stix'

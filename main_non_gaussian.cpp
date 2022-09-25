@@ -392,6 +392,8 @@ int main() {
                 parent_dir = abs_p.string();
             }
         }
+        parent_dir += "/robot" + std::to_string(robot_num);
+        std::filesystem::create_directories(parent_dir);
         const std::string filename = parent_dir + scenario.filename_;
         outputResultToFile(filename, times,
                            x_true_vec, y_true_vec, yaw_true_vec,

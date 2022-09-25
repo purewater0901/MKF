@@ -8,13 +8,14 @@ import platform
 import os
 
 if __name__ == '__main__':
-    gaussian_filename = "simple_vehicle_gaussian"
-    non_gaussian_filename = "simple_vehicle_non_gaussian"
-    output_filename = "utlas_simulation_result"
+    robot_num = 1
+    gaussian_filename = "/simple_vehicle_gaussian"
+    non_gaussian_filename = "/simple_vehicle_non_gaussian"
+    output_filename = "/utlas_simulation_result"
     os.chdir('../../')
     path = os.getcwd()
-    gaussian_data = pd.read_csv(path + "/result/data/" + gaussian_filename + ".csv")
-    non_gaussian_data = pd.read_csv(path + "/result/data/" + non_gaussian_filename + ".csv")
+    gaussian_data = pd.read_csv(path + "/result/data/robot" + str(robot_num) + gaussian_filename + ".csv")
+    non_gaussian_data = pd.read_csv(path + "/result/data/robot" + str(robot_num) + non_gaussian_filename + ".csv")
     flag_visualize_trajectory = True
 
     fig = plt.figure(figsize=(15.5,8.5))
@@ -65,5 +66,5 @@ if __name__ == '__main__':
         ax2.set_xlabel(r'time[$s$]', fontsize=30)
         ax2.set_ylabel(r'yaw[$rad$]', fontsize=30)
 
-    plt.savefig(path + "/result/picture/" + output_filename + ".png")
+    plt.savefig(path + "/result/picture/robot" + str(robot_num) + output_filename + ".png")
     plt.show()

@@ -11,11 +11,12 @@ import matplotlib
 if __name__ == '__main__':
     matplotlib.rcParams['pdf.fonttype'] = 42
     matplotlib.rcParams['ps.fonttype'] = 42
-    filename = "simple_vehicle_non_gaussian"
+    robot_num = 1
+    filename = "/simple_vehicle_non_gaussian"
     os.chdir('../../')
     path = os.getcwd()
-    data = pd.read_csv(path + "/result/data/" + filename + ".csv")
-    flag_visualize_trajectory = True
+    data = pd.read_csv(path + "/result/data/robot" + str(robot_num) + filename + ".csv")
+    flag_visualize_trajectory = False
 
     cm = 1 / 2.54
     fig = plt.figure(figsize=(8.5,11))
@@ -78,6 +79,6 @@ if __name__ == '__main__':
         ax2.set_xlabel(r'time[$s$]', fontsize=30)
         ax2.set_ylabel(r'yaw[$rad$]', fontsize=30)
 
-    plt.savefig(path + "/result/picture/" + filename + ".png")
-    plt.savefig(path + "/result/picture/" + filename + ".eps", bbox_inches="tight", pad_inches=0.05)
+    plt.savefig(path + "/result/picture/robot" + str(robot_num) + filename + ".png")
+    plt.savefig(path + "/result/picture/robot" + str(robot_num) + filename + ".eps", bbox_inches="tight", pad_inches=0.05)
     plt.show()

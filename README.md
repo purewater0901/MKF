@@ -39,7 +39,7 @@ Before running the code for non-Gaussian environment, you need to preprocess the
 
 ## Result with UTIAS dataset
 #### Robot1
-![](./result/picture/utlas_simulation_result_trajectory.png)
+![](./result/picture/robot1/utlas_simulation_result_trajectory.png)
 
 
 ## References

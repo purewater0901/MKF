@@ -29,7 +29,7 @@ struct LandMark
 };
 
 int main() {
-    const int robot_num = 1;
+    const int robot_num = 2;
     // Creating Map
     std::map<int, int> barcode_map;
     barcode_map.insert(std::make_pair(23, 5));

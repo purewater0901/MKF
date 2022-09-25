@@ -8,7 +8,7 @@ import platform
 import os
 
 if __name__ == '__main__':
-    robot_num = 1
+    robot_num = 2
     gaussian_filename = "/simple_vehicle_gaussian"
     non_gaussian_filename = "/simple_vehicle_non_gaussian"
     output_filename = "/utlas_simulation_result"

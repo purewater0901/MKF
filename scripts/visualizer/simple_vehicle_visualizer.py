@@ -11,7 +11,7 @@ import matplotlib
 if __name__ == '__main__':
     matplotlib.rcParams['pdf.fonttype'] = 42
     matplotlib.rcParams['ps.fonttype'] = 42
-    robot_num = 1
+    robot_num = 2
     filename = "/simple_vehicle_non_gaussian"
     os.chdir('../../')
     path = os.getcwd()

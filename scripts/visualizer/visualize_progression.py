@@ -14,7 +14,7 @@ if __name__ == '__main__':
     filename = "simple_vehicle_non_gaussian"
     os.chdir('../../')
     path = os.getcwd()
-    print_pos = False
+    print_pos = True
 
     fig = plt.figure(figsize=(8.5,11))
     plt.subplots_adjust(wspace=0.4, hspace=0.8)
@@ -45,14 +45,14 @@ if __name__ == '__main__':
 
     if print_pos:
         plt.plot(phi, mkf_pos_error, color="red", linewidth=4.0, label="MKF")
-        plt.plot(phi, ekf_pos_error, color="blue", linewidth=4.0, label="EKF")
-        plt.plot(phi, ukf_pos_error, color="green", linewidth=4.0, label="UKF")
+        plt.plot(phi, ekf_pos_error, color="blue", linewidth=4.0, label="EKF", linestyle="dashed")
+        plt.plot(phi, ukf_pos_error, color="green", linewidth=4.0, label="UKF", linestyle="dashdot")
         plt.ylabel(r"position error[m]", fontsize=40)
         filename += "_position_progression"
     else:
         plt.plot(phi, mkf_yaw_error, color="red", linewidth=4.0, label="MKF")
-        plt.plot(phi, ekf_yaw_error, color="blue", linewidth=4.0, label="EKF")
-        plt.plot(phi, ukf_yaw_error, color="green", linewidth=4.0, label="UKF")
+        plt.plot(phi, ekf_yaw_error, color="blue", linewidth=4.0, label="EKF", linestyle="dashed")
+        plt.plot(phi, ukf_yaw_error, color="green", linewidth=4.0, label="UKF", linestyle="dashdot")
         plt.ylabel(r"yaw error[rad]", fontsize=40)
         filename += "_yaw_progression"
 

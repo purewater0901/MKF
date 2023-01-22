@@ -47,7 +47,7 @@ Before running the code for non-Gaussian environment, you need to preprocess the
 
 ## References
 <a name="ref1">[1]</a> "Moment-Based Exact Uncertainty Propagation Through Nonlinear Stochastic Autonomous Systems",
-S. J. Julier and J. K. Uhlmann,
+Ashkan Jasour, Allen Wang, Brian C. Williams
 https://arxiv.org/abs/2101.12490
 
 <a name="ref2">[2]</a> "The UTIAS multi-robot cooperative localization and mapping dataset", 

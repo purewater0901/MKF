@@ -3,7 +3,8 @@
 Moment-based Kalman Filter(MKF) is a nonlinear Kalman filter that uses exact moment propagation method to estimate state from noisy measurements.
 
 ## Paper 
-coming soon...
+This paper has been accepted by ICRA 2023. 
+[Paper Link](https://arxiv.org/abs/2301.09130)
 
 ## Language and test environment
 The main code is written in C++ and visualization code is mainly used Python. However, we also use [matplotlib.cpp](https://github.com/lava/matplotlib-cpp) for the simple visualization in C++. Note that we only test our code on Ubuntu20.04.

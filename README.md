@@ -3,7 +3,8 @@
 Moment-based Kalman Filter(MKF) is a nonlinear Kalman filter that uses exact moment propagation method to estimate state from noisy measurements.
 
 ## Paper 
-This paper has been accepted by ICRA 2023. 
+This paper has been accepted by the IEEE Conference on Robotics and Automation (ICRA), 2023.   
+  
 [Paper Link](https://arxiv.org/abs/2301.09130)
 
 ## Language and test environment
